@@ -2,39 +2,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    PlayerInputActions playerInputActions;
 
-    private Vector3 inputVector;
+    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private GameInput gameInput;
+
+    private void Awake()
+    {
+       playerInputActions = new PlayerInputActions();
+       playerInputActions.Player.Enable();
+    }
 
     void Update()
     {
-        inputVector = new Vector2(0,0);
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            inputVector.y += 1f;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            inputVector.y -= 1f;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            inputVector.x -= 1f;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            inputVector.x += 1f;
-        }
-
-        inputVector = inputVector.normalized;
-
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
+
+        float rotateSpeed = 5f;
+
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
-        transform.forward = moveDirection;
+        transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
 
     }
 }
