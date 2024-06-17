@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 3208852284497117844}
   - component: {fileID: 1308307935059113500}
   - component: {fileID: 8354580726716244064}
-  - component: {fileID: 6709320828252119831}
+  - component: {fileID: 3415240024942881750}
   m_Layer: 0
   m_Name: Body_Upper
   m_TagString: Untagged
@@ -413,8 +413,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6709320828252119831
-BoxCollider:
+--- !u!135 &3415240024942881750
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -432,7 +432,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.49999997
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8360072140432155159
 GameObject:
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 8629056445576350458}
   - component: {fileID: 721269702968603700}
   - component: {fileID: 4866943543667032460}
-  - component: {fileID: 9154575661961371022}
+  - component: {fileID: 2531651790179028705}
   m_Layer: 0
   m_Name: Body_Lower
   m_TagString: Untagged
@@ -521,8 +521,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9154575661961371022
-BoxCollider:
+--- !u!135 &2531651790179028705
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -540,7 +540,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8507855026787259490
 GameObject:
@@ -566,9 +566,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8507855026787259490}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 949919626071199249}
