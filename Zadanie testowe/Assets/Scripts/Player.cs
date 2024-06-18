@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IArmoryObjectParent
 {
     public static Player Instace {  get; private set; }
 
@@ -11,15 +11,23 @@ public class Player : MonoBehaviour
         public ClearCounter selectedCounter;
     }
 
+    //Input
     private PlayerInputActions playerInputActions;
 
+    //Vars
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask layerMask;
 
+    // TO INTERFACE
+    [SerializeField] Transform playerItemPoint;
+    private ArmoryObject armoryObject;
+
+    //Movement
     private bool isWalking;
     private Vector3 lastInteractionDir;
 
+    //Interaction
     private ClearCounter selectedCounter;
 
     private void Start()
@@ -36,7 +44,7 @@ public class Player : MonoBehaviour
     {
         if (selectedCounter != null)
         {
-            selectedCounter.Interact();
+            selectedCounter.Interact(this);
         }
     }
 
@@ -137,5 +145,30 @@ public class Player : MonoBehaviour
         {
             selectedCounter = selectedCounter
         });
+    }
+
+    public Transform GetCounterTopPoint()
+    {
+        return playerItemPoint;
+    }
+
+    public void SetArmoryObject(ArmoryObject armoryObject)
+    {
+        this.armoryObject = armoryObject;
+    }
+
+    public ArmoryObject GetArmoryObject()
+    {
+        return armoryObject;
+    }
+
+    public void ClearArmoryObject()
+    {
+        this.armoryObject = null;
+    }
+
+    public bool HasArmoryObject()
+    {
+        return this.armoryObject != null;
     }
 }

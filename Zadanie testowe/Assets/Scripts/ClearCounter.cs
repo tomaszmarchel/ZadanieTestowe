@@ -1,12 +1,59 @@
 using UnityEngine;
 
-public class ClearCounter : MonoBehaviour
+public class ClearCounter : MonoBehaviour, IArmoryObjectParent
 {
-    [SerializeField] Transform swordPrefab;
+    [SerializeField] ArmoryScriptableObject armoryObjectSO;
     [SerializeField] Transform counterTopPoint;
+    [SerializeField] ClearCounter secondClearCounter;
 
-    public void Interact()
+    private ArmoryObject armoryObject;
+    
+    private void Update()
     {
-        Transform swordTransfornm = Instantiate(swordPrefab, counterTopPoint);
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (armoryObjectSO != null)
+            {
+                armoryObject.SetArmoryObjectParent(secondClearCounter);
+            }
+        }
+    }
+
+    public void Interact(Player player)
+    {
+        if (armoryObject == null)
+        {
+            Transform armoryObjectTransform = Instantiate(armoryObjectSO.prefab, counterTopPoint);
+            armoryObjectTransform.GetComponent<ArmoryObject>().SetArmoryObjectParent(this);
+        }
+        else
+        {
+            armoryObject.SetArmoryObjectParent(player);
+        }
+    }
+
+    public Transform GetCounterTopPoint()
+    {
+        return counterTopPoint; 
+    }
+
+    public void SetArmoryObject(ArmoryObject armoryObject)
+    {
+        this.armoryObject = armoryObject;
+    }
+
+    public ArmoryObject GetArmoryObject()
+    {
+        return armoryObject;
+    }
+
+    public void ClearArmoryObject()
+    {
+        this.armoryObject = null;
+    }
+
+    public bool HasArmoryObject()
+    {
+        return this.armoryObject != null;
     }
 }
