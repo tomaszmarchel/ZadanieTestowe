@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class ClearCounter : MonoBehaviour
 {
+    [SerializeField] Transform swordPrefab;
+    [SerializeField] Transform counterTopPoint;
 
     public void Interact()
     {
-        Debug.Log("sd");
+        Transform swordTransfornm = Instantiate(swordPrefab, counterTopPoint);
     }
 }
